@@ -16,7 +16,7 @@
 
         <el-form-item>
           <el-input
-            :type="[flag ? 'text' : 'password']"
+            :type="[form.flag ? 'text' : 'password']"
             v-model="form.password"
             maxlength="30"
           >
@@ -24,7 +24,12 @@
               <el-icon><Lock /></el-icon>
             </template>
             <template #suffix>
-              <el-icon @click="flag = !flag"><Hide /></el-icon>
+              <el-icon @click="form.flag = !form.flag" v-if="form.flag">
+                <View />
+              </el-icon>
+              <el-icon @click="form.flag = !form.flag" v-if="!form.flag">
+                <Hide />
+              </el-icon>
             </template>
           </el-input>
         </el-form-item>
@@ -37,7 +42,9 @@
 
     <div class="copyright">
       <div class="copyright-link">
-        <a href="https://beian.miit.gov.cn/">赣ICP备2022002676号-1</a>
+        <a target="new" href="https://beian.miit.gov.cn/"
+          >赣ICP备2022002676号-1</a
+        >
       </div>
     </div>
   </div>
@@ -45,7 +52,7 @@
 
 <script setup>
 import { ref } from 'vue'
-import { User, Lock, Hide } from '@element-plus/icons-vue'
+import { User, Lock, Hide, View } from '@element-plus/icons-vue'
 
 const form = ref({
   username: '',

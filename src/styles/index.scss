@@ -39,9 +39,7 @@ div#driver-popover-item .driver-popover-footer .driver-next-btn {
   font-size                  : 10px;
   font-weight                : initial;
   font-style                 : initial;
-  font-family                : 'Poppins', 'Microsoft Jhenghei', sans-serif;
-  font-family                : 'JetBrains Mono', 'Microsoft Jhenghei', sans-serif;
-  font-family                : Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif;
+  font-family                : Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, 'JetBrains Mono', 'Microsoft Jhenghei', Microsoft YaHei, Arial, sans-serif;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   text-shadow                : 0 0 1.15px #a4a09ad9, 0 0 1px #7b7b7bcc, 0 0 0.75px #302f2d45;
 }
@@ -58,9 +56,8 @@ div#driver-popover-item .driver-popover-footer .driver-next-btn {
 
 
 ::selection {
-  color      : #FFFFFF;
-  background : #075db3;
-  text-shadow: none;
+  color     : #FFFFFF;
+  background: #85ce61;
 }
 
 
