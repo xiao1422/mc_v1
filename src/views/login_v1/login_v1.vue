@@ -162,11 +162,11 @@ $lightGreen: #85ce61;
 						align-items: center;
 						justify-content: center;
 						height: 100%;
-						width: 40px;
+						width: 20px;
 
 						svg {
-							height: 60%;
-							width: 60%;
+							height: 100%;
+							width: 100%;
 							color: $white;
 						}
 					}
@@ -187,16 +187,21 @@ $lightGreen: #85ce61;
 							}
 						}
 
+						[class$='prefix-inner'] {
+							margin-left: 7px;
+						}
+
 						input {
 							color: $white;
 							font-size: 17px;
 							caret-color: $white;
-							padding: 0 40px;
+							// padding: 0 40px;
 						}
 					}
 
 					.el-button {
 						width: 100%;
+                        height: 100%;
 
 						span {
 							font-size: 14px;
