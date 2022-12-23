@@ -49,7 +49,10 @@
 <script setup>
 import { ref } from 'vue'
 import { User, Lock, Hide, View } from '@element-plus/icons-vue'
-import { login } from '@/api/login'
+// import { login } from '@/api/login'
+import { useStore } from 'vuex'
+
+const store = useStore()
 
 const form = ref({
 	username: 'admin',
@@ -90,9 +93,7 @@ const formRef = ref(null)
 const handleLogin = () => {
 	formRef.value.validate(async (valid) => {
 		if (valid) {
-			// console.log('submit!')
-            const res = await login(form.value)
-            console.log(res)
+            store.dispatch('app/login', form.value)
 		} else {
 			console.log('error submit!')
 			return false
