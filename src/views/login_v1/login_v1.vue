@@ -17,25 +17,23 @@
 				</el-form-item>
 
 				<el-form-item prop="password">
-					<el-input :type="[form.flag ? 'text' : 'password']" v-model="form.password">
+					<el-input :type="passwordType" v-model="form.password">
 						<template #prefix>
 							<el-icon>
 								<Lock />
 							</el-icon>
 						</template>
 						<template #suffix>
-							<el-icon @click="form.flag = !form.flag" v-if="form.flag">
-								<View />
-							</el-icon>
-							<el-icon @click="form.flag = !form.flag" v-if="!form.flag">
-								<Hide />
-							</el-icon>
+                            <el-icon @click="changeType">
+                                <View v-if="passwordType === 'text'" />
+                                <Hide v-else-if="passwordType === 'password'" />
+                            </el-icon>
 						</template>
 					</el-input>
 				</el-form-item>
 
 				<el-form-item>
-					<el-button type="success" @click="login">登陆</el-button>
+					<el-button type="success" @click="handleLogin">登陆</el-button>
 				</el-form-item>
 			</el-form>
 		</div>
@@ -51,11 +49,11 @@
 <script setup>
 import { ref } from 'vue'
 import { User, Lock, Hide, View } from '@element-plus/icons-vue'
+import { login } from '@/api/login'
 
 const form = ref({
-	username: '',
-	password: '',
-	flag: false
+	username: 'admin',
+	password: '123456'
 })
 
 const rules = ref({
@@ -89,15 +87,22 @@ const rules = ref({
 
 const formRef = ref(null)
 
-const login = () => {
-	formRef.value.validate((valid) => {
+const handleLogin = () => {
+	formRef.value.validate(async (valid) => {
 		if (valid) {
-			console.log('submit!')
+			// console.log('submit!')
+            const res = await login(form.value)
+            console.log(res)
 		} else {
 			console.log('error submit!')
 			return false
 		}
 	})
+}
+
+const passwordType = ref('password')
+const changeType = () => {
+    passwordType.value = passwordType.value === 'password' ? 'text' : 'password'
 }
 
 </script>

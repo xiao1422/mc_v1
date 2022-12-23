@@ -13,6 +13,7 @@ import store from './store'
 import '@/styles/index.scss'
 import '@/plugins/index'
 import svgIcons from '@/plugins/xi-icons'
+import 'element-plus/dist/index.css'
 
 const app = createApp(App)
 svgIcons(app)

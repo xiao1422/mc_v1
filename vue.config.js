@@ -22,18 +22,12 @@ function resolve (dir) {
 const webpack = require('webpack')
 
 module.exports = {
-    devServer: {  // 解决 Vue 项目 invalid host header 问题
-        allowedHosts: [  // 设置允许访问的域名
-            'xiaomizha.ltd',
-            '.xiaomizha.ltd'
-        ],
-    },
     configureWebpack: (config) => {
         config.plugins.push(AutoImport({
-            resolvers: [ElementPlusResolver()],
+            resolvers: [ElementPlusResolver()]
         }))
         config.plugins.push(Components({
-            resolvers: [ElementPlusResolver()],
+            resolvers: [ElementPlusResolver()]
         }))
     },
     chainWebpack (config) {
@@ -83,5 +77,26 @@ module.exports = {
                 symbolId: 'icon-[name]'
             })
             .end()
+    },
+    devServer: {
+        // 解决 Vue 项目 invalid host header 问题
+        // 设置允许访问的域名
+        allowedHosts: [
+            'xiaomizha.ltd',
+            '.xiaomizha.ltd'
+        ],
+        // 是否 https
+        https: false,
+        // 是否热更新
+        hot: 'only',
+        proxy: {
+            '/api': {
+                target: 'https://lianghj.top:8888/api/private/v1/',
+                changeOrigin: true,
+                pathRewrite: {
+                    '^/api': ''
+                }
+            }
+        }
     }
 }
