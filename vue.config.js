@@ -1,7 +1,7 @@
 /*
  * @Author: xiao
  * @Date: 2022-12-21 09:42:25
- * @LastEditTime: 2022-12-21 18:42:16
+ * @LastEditTime: 2022-12-23 17:26:03
  * @LastEditors: xiao
  * @Description: xiao
  * @FilePath: \WWW\study\mc_v1\vue.config.js
@@ -22,6 +22,12 @@ function resolve (dir) {
 const webpack = require('webpack')
 
 module.exports = {
+    devServer: {  // 解决 Vue 项目 invalid host header 问题
+        allowedHosts: [  // 设置允许访问的域名
+            'xiaomizha.ltd',
+            '.xiaomizha.ltd'
+        ],
+    },
     configureWebpack: (config) => {
         config.plugins.push(AutoImport({
             resolvers: [ElementPlusResolver()],
