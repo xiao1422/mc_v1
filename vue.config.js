@@ -86,7 +86,7 @@ module.exports = {
             '.xiaomizha.ltd'
         ],
         // 是否 https
-        https: false,
+        https: true,
         // 是否热更新
         hot: 'only',
         proxy: {
