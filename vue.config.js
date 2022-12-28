@@ -81,6 +81,14 @@ module.exports = {
             .end()
     },
     devServer: {
+        host: '0.0.0.0',
+        port: 8080,
+        client: {
+            webSocketURL: 'ws://0.0.0.0:8080/ws'
+        },
+        headers: {
+            'Access-Control-Allow-Origin': '*'
+        },
         // 解决 Vue 项目 invalid host header 问题
         // 设置允许访问的域名
         allowedHosts: [
@@ -104,10 +112,20 @@ module.exports = {
     css: {
         loaderOptions: {
             sass: {
-                additionalData: `
-                  @import "@/styles/variables.scss";  // scss文件地址
-                  @import "@/styles/mixin.scss";  // scss文件地址
-                `
+                // additionalData: `
+                //   @import "@/styles/variables.scss";  // scss文件地址
+                //   @import "@/styles/mixin.scss";  // scss文件地址
+                // `
+                additionalData: (content, loaderContext) => {
+                    const { resourcePath } = loaderContext
+                    if (resourcePath.endsWith('variables.scss')) return content
+                    if (resourcePath.endsWith('mixin.scss')) return content
+                    return `
+                        @import "@/styles/variables.scss";
+                        @import "@/styles/mixin.scss";
+                        ${content}
+                    `
+                }
             }
         }
     }
