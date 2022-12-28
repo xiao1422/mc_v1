@@ -14,6 +14,7 @@ import '@/styles/index.scss'
 import '@/plugins/index'
 import svgIcons from '@/plugins/xi-icons'
 import 'element-plus/dist/index.css'
+import '@/router/permission'
 
 const app = createApp(App)
 svgIcons(app)
