@@ -16,12 +16,14 @@ module.exports = {
         indent: 0,
         'space-before-function-paren': 0,
         'no-tabs': 'off',
-        'vue/multi-word-component-names': 'off'
-        // 'vue/multi-word-component-names': [
-        //     'error',
-        //     {
-        //         ignores: ['index']
-        //     }
-        // ]
+        // 关闭组件命名规则
+        // 'vue/multi-word-component-names': 'off'
+        // 添加组件命名忽略规则
+        'vue/multi-word-component-names': [
+            'error',
+            {
+                ignores: ['index']
+            }
+        ]
     }
 }
