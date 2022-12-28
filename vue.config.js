@@ -16,9 +16,11 @@ module.exports = defineConfig({
 })
 
 const path = require('path')
-function resolve (dir) {
+
+function resolve(dir) {
     return path.join(__dirname, dir)
 }
+
 const webpack = require('webpack')
 
 module.exports = {
@@ -30,7 +32,7 @@ module.exports = {
             resolvers: [ElementPlusResolver()]
         }))
     },
-    chainWebpack (config) {
+    chainWebpack(config) {
         // 设置 svg-sprite-loader
         // config 为 webpack 配置对象
         // config.module 表示创建一个具名规则，以后用来修改规则
@@ -96,6 +98,16 @@ module.exports = {
                 pathRewrite: {
                     '^/api': ''
                 }
+            }
+        }
+    },
+    css: {
+        loaderOptions: {
+            sass: {
+                additionalData: `
+                  @import "@/styles/variables.scss";  // scss文件地址
+                  @import "@/styles/mixin.scss";  // scss文件地址
+                `
             }
         }
     }
