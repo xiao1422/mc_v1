@@ -4,12 +4,20 @@ const routes = [
     {
         path: '/login',
         name: 'login',
-        component: () => import('../views/login')
+        component: () => import('@/views/login')
     },
     {
         path: '/',
-        name: '/',
-        component: () => import('../layout')
+        name: 'home',
+        component: () => import('@/layout'),
+        redirect: '/users',
+        children: [
+            {
+                path: 'users',
+                name: 'users',
+                component: () => import('@/layout')
+            }
+        ]
     }
 ]
 

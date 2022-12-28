@@ -6,5 +6,6 @@
  * @Description: xiao
  * @FilePath: \WWW\study\mc_v1\src\plugins\index.js
  */
-import './element'
 import 'font-awesome/css/font-awesome.css'
+import '@/styles/index.scss'
+import 'element-plus/dist/index.css'
