@@ -257,6 +257,7 @@ $lightGreen: #85ce61;
 		.copyright-link {
 			a {
 				color: $darkGray;
+                font-size: 12px;
 			}
 		}
 	}
